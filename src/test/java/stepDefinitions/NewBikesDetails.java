@@ -54,6 +54,9 @@ public class NewBikesDetails {
 		
 		@Then("All the upcomings bikes of Honda manufacturer are displayed")
 		public void all_the_upcomings_of_honda_manufacturer_are_displayed() throws IOException {
+			
+			BaseClass.getLogger().info("Upcoming bikes of Honda are displayed");
+			
 			 ubp= new UpcomingBikesPage(BaseClass.getDriver());
 			 ubp.clickViewMore();
 			List<WebElement> modelName= ubp.listOfModels();
@@ -85,7 +88,7 @@ public class NewBikesDetails {
 				    		     }
 				   	}
 			 }
-			 
+			 BaseClass.getLogger().info("Upcoming bikes of Honda under 4L are readed");
 			 ExcelWriter.enterBikeDetails(mName, pr, eDate,"NewBikes");
 		}
 
