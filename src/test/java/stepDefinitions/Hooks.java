@@ -21,35 +21,23 @@ public class Hooks {
 	@Before
    public void setup() throws IOException
    {
-	   	driver=BaseClass.initilizeBrowser();
-	   	    	
+	   	driver=BaseClass.initilizeBrowser();	   	    	
 	   	p=BaseClass.getProperties();
 	   	driver.manage().window().maximize();
-	   	driver.get(p.getProperty("URL"));
-   			
-	}
-		
+	   	driver.get(p.getProperty("URL"));   			
+	}		
    
    @After
-   public void tearDown(Scenario scenario) {
-       		
-      driver.quit();
-      
-   }
-   
+   public void tearDown(Scenario scenario) {       		
+      driver.quit();      
+   }   
 
    @AfterStep
    public void addScreenshot(Scenario scenario) {
-       
-   	// this is for cucumber junit report
-//       if(scenario.isFailed()) {
        	
        	TakesScreenshot ts=(TakesScreenshot) driver;
        	byte[] screenshot=ts.getScreenshotAs(OutputType.BYTES);
-       	scenario.attach(screenshot, "image/png",scenario.getName());
-       	            
-      // }
-     
+       	scenario.attach(screenshot, "image/png",scenario.getName());       
    }
   
 }

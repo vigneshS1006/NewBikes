@@ -11,7 +11,7 @@ public class LoginPage extends BasePage{
 		
 	}
 
-	//Locating elements
+	//---Locating elements---
 	
 	@FindBy(xpath="//div[text()='Use another account']")
 	WebElement anotherAcc;
@@ -25,26 +25,26 @@ public class LoginPage extends BasePage{
 	@FindBy(xpath="//div[@class='Ekjuhf Jj6Lae']")
 	WebElement errorMessage;
 	
-	//Action Methods
+	//---Action Methods---
 	
+	//clicking on Use Another account
 	public void clickAnotherAcc() {
 		anotherAcc.click();		
 	}
 	
+	//Entering email
 	public void setEmail(String email) {
-		explicitWait(emailInput);
-		
-		if(emailInput.getAttribute("data-initial-value")!=null) {
-			emailInput.clear();
-		}		
+		explicitWait(emailInput);			
 		emailInput.sendKeys(email);
 		System.out.println(emailInput.getAttribute("data-initial-value"));
 	}
 	
+	//Clicking Next after entering email
 	public void clickNext() {
 		scrollToElement(emailNext,emailNext);
 	}
 	
+	//Reading and returning the error message
 	public String getErrorMessage() {
 		return errorMessage.getText();
 	}

@@ -24,51 +24,39 @@ public class Login {
 	List<String> windowIdsList;	
 
 	@Given("the user navigates to home page")
-	public void the_user_navigates_to_home_page() {
-		
+	public void the_user_navigates_to_home_page() {		
 		homepage=new HomePage(BaseClass.getDriver());
 		homepage.clickLogo();	 
 		BaseClass.getLogger().info("Navigated to Home Page");
 	}
 
 	@When("clicking on Login button And clicking on google")
-	public void clicking_on_login_button_and_clicking_on_google() {
-	    
+	public void clicking_on_login_button_and_clicking_on_google() {	    
 		BaseClass.getLogger().info("Trying to login in google");
 		homepage=new HomePage(BaseClass.getDriver());
 		homepage.clickLogin();		
-		homepage.clickGoogle();
-		
+		homepage.clickGoogle();		
 	}
 
 	@Then("entering the invalid email {string}")
 	public void entering_the_invalid_email(String row) throws IOException {
 		
-		BaseClass.getLogger().info("Entering invalid credentials");
-		
-		ExcelReader excel=new ExcelReader();
-		
+		BaseClass.getLogger().info("Entering invalid credentials");		
+		ExcelReader excel=new ExcelReader();		
 		loginpage=new LoginPage(BaseClass.getDriver());	    
-		windowIds=driver.getWindowHandles();
+		windowIds=driver.getWindowHandles();//getting window handles after clicking google 
 		windowIdsList=new ArrayList<>(windowIds);			
-		
-		driver.switchTo().window(windowIdsList.get(1));	
-		
-		System.out.println(driver.getTitle());
-		
+		driver.switchTo().window(windowIdsList.get(1));	//switching driver to the child window		
+		//System.out.println(driver.getTitle());
+		//if use another account is displayed
 		try {
 		loginpage.clickAnotherAcc();
-		}catch(Exception e) {}
-		
+		}catch(Exception e) {}		
 		//Getting email from excel file
-		String email=excel.data(row);		
-		loginpage.setEmail(email);
-		
-		loginpage.clickNext();
-		
+		String email=excel.data(row); //method from Utilities.ExcelReader class		
+		loginpage.setEmail(email);		
+		loginpage.clickNext();		
 		String errormsg=loginpage.getErrorMessage();
 		System.out.println(errormsg);
-	}
-
-	
+	}	
 }

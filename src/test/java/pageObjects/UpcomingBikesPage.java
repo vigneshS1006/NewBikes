@@ -8,11 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 public class UpcomingBikesPage extends BasePage {
-	//WebDriver driver;
+	
 	public UpcomingBikesPage(WebDriver driver) {
 		super(driver);
 		
 	}
+	
+	//---Locating elements---
 	
 	@FindBy(xpath ="//select[@id='makeId']")
 	WebElement manufacturer;
@@ -28,35 +30,33 @@ public class UpcomingBikesPage extends BasePage {
 	
 	@FindBy(xpath ="//ul[@id='modelList']//li//div/a/following-sibling::div[2]")
 	List<WebElement> expectedDate;
+		
+	//---Action Methods---
 	
-	
-	
-	
-	//Actions
-	
-	
+	//Selecting manufacturer as HONDA
 	public void selectManufacturer() {
-		 try{
-	    	
+		 try{	    	
 	      Select manu=new Select(manufacturer);
-	     manu.selectByVisibleText("Honda");}
-	     catch(Exception e) {}
+	      manu.selectByVisibleText("Honda");
+	      }catch(Exception e) {}
 	}
 	
-	
+	//Clicking on view more
 	public void clickViewMore() {	
-
-		scrollToElement(viewMore, viewMore);
-	       
+		scrollToElement(viewMore, viewMore);	       
 	}
+	
+	//List of Model Name
 	public  List<WebElement> listOfModels(){
 		return modelName;
 	}
 	
+	//List of price
 	public  List<WebElement> priceOfModels(){
 		return price;
 	}
 	
+	//List of Release date
 	public  List<WebElement> expectedDateOfRelease(){
 		return expectedDate;
 	}

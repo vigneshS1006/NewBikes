@@ -53,18 +53,18 @@ public class HomePage extends BasePage {
 	
 	
 	//click on Upcoming bikes from the options available in NewBikes
-	public void clickOnUpcomingBikes() {
+	public void clickOnUpcomingBikes() {		
 	 for(WebElement x:newBikestoggle)
-     {
-   	if(x.getText().equalsIgnoreCase("Upcoming Bikes")) {
-   		x.click();
-   		break;
-   	}		
-   }
+       {
+		   	if(x.getText().equalsIgnoreCase("Upcoming Bikes")) {
+		   		x.click();
+		   		break;
+		   	}		
+	   }
 	}
 	
-	public void moveToUsedCars() {
-		
+	//moving to usedCars
+	public void moveToUsedCars() {		
 		 for(WebElement x:toggles)
 	      {
 	    	  if(x.getText().equals("Used Cars")) {
@@ -74,7 +74,7 @@ public class HomePage extends BasePage {
 	      }
 	}
 	
-	
+	//selecting city as Chennai
 	public void selectCity() {
 
 		 for(WebElement x:cities)
@@ -86,15 +86,18 @@ public class HomePage extends BasePage {
 	      }
 	}
 	
+	//clicking on login
 	public void clickLogin() {		
 		login.click();
 	}
 	
+	//login using google
 	public void clickGoogle() {
 		explicitWait(google);
 		google.click();
 	}
 	
+	//clicking on the logo of the website
 	public void clickLogo() {
 		scrollToElement(zigWheelsLogo,zigWheelsLogo);
 	}

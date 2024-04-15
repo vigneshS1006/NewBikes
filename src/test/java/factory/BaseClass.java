@@ -17,17 +17,18 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BaseClass {
 
-	 static WebDriver driver;
+	static WebDriver driver;
     static Properties p;
     static Logger logger;
- 	     
+ 
+//Initializing browser
 public static WebDriver initilizeBrowser() throws IOException
 {
 	if(getProperties().getProperty("execution_env").equalsIgnoreCase("remote"))
 	{
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		
-		//os
+		//Operating System
 		if (getProperties().getProperty("os").equalsIgnoreCase("windows")) {
 		    capabilities.setPlatform(Platform.WIN11);
 		} else if (getProperties().getProperty("os").equalsIgnoreCase("mac")) {
@@ -35,7 +36,7 @@ public static WebDriver initilizeBrowser() throws IOException
 		} else {
 		    System.out.println("No matching OS..");
 		      }
-		//browser
+		//Browser
 		switch (getProperties().getProperty("browser").toLowerCase()) {
 		    case "chrome":
 		        capabilities.setBrowserName("chrome");
@@ -66,17 +67,15 @@ public static WebDriver initilizeBrowser() throws IOException
 			}
 		}
 	 driver.manage().deleteAllCookies(); 
-	 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-	 //driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
-	 
-	 return driver;
-	 
+	 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));	 
+	 return driver;	 
 }
 
 public static WebDriver getDriver() {
 		return driver;
 	}
 
+//Accessing property file
 public static Properties getProperties() throws IOException
 {		 
    FileReader file=new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\config.properties");
@@ -86,6 +85,7 @@ public static Properties getProperties() throws IOException
 	return p;
 }
 
+//Logs
 public static Logger getLogger() 
 {		 
 	logger=LogManager.getLogger(); //Log4j
