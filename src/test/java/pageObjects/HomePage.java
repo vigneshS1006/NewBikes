@@ -89,12 +89,15 @@ public class HomePage extends BasePage {
 	//clicking on login
 	public void clickLogin() {		
 		login.click();
+		
 	}
 	
 	//login using google
 	public void clickGoogle() {
 		explicitWait(google);
-		google.click();
+		//google.click();
+		//scrollToElement(google,google);
+		clickUsingJs(google);
 	}
 	
 	//clicking on the logo of the website

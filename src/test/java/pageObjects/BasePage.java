@@ -35,6 +35,12 @@ public class BasePage {
 
 	}
 	
+	public void clickUsingJs(WebElement element) {
+		JavascriptExecutor executor = (JavascriptExecutor) driver;
+		executor.executeScript("arguments[0].click();", element);
+
+	}
+	
 	public void scrollToElement(WebElement a,WebElement b) {
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].scrollIntoView();", a);
